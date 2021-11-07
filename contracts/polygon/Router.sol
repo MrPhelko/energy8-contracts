@@ -46,6 +46,11 @@ contract Router is IRouter, Ownable {
   constructor(IERC20 token) {
     _token = token;
   }
+      // Function to receive Ether. msg.data must be empty
+    receive() external payable {}
+
+    // Fallback function is called when msg.data is not empty
+    fallback() external payable {}
   
   function deposit(uint32 serverId, string calldata nickname, uint amount) external {
     require(amount > 0, "Amount must be greater than 0");
